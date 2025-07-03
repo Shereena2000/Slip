@@ -6,16 +6,15 @@ class AppTittleSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: SizedBox(
-        child: Center(
-          child: Text(
-            "Slip",
-            style: TextStyle(
-              color: whiteColor,
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-            ),
+    return SizedBox(
+          height: MediaQuery.of(context).size.height * 0.25,
+      child: Center(
+        child: Text(
+          "Slip",
+          style: TextStyle(
+            color: whiteColor,
+            fontSize: 45,
+            fontWeight: FontWeight.w700,
           ),
         ),
       ),

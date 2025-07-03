@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:slip/bloc/login/login_cubit.dart';
+import 'package:slip/bloc/login/login_state.dart';
 import 'package:slip/constants/spacing.dart';
 import 'package:slip/views/login_view/widgets/login_header.dart';
 import 'package:slip/views/login_view/widgets/login_sub_title.dart';
@@ -24,25 +27,67 @@ class LoginSection extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(40.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            LoginHeader(),
-            hSpace10,
-            LoginSubTitle(),
-            PhoneNumberInputFeild(mobileController: _mobileController),
-            hSpace15,
-            SignInButton(
-              onPressed: () {
-                // Handle sign in action
+        child: BlocConsumer<LoginCubit, LoginState>(
+          builder: (context, state) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                LoginHeader(),
+                hSpace10,
+                LoginSubTitle(),
+                PhoneNumberInputFeild(mobileController: _mobileController),
+                hSpace15,
+                state.when(
+                  loading:
+                      () => const Center(child: CircularProgressIndicator()),
+                  initial:
+                      () => SignInButton(
+                        onPressed: () {
+                          context.read<LoginCubit>().login(
+                            _mobileController.text,
+                          );
+                        },
+                      ),
+                  success:
+                      (_) => SignInButton(
+                        onPressed: () {
+                          context.read<LoginCubit>().login(
+                            _mobileController.text,
+                          );
+                        },
+                      ),
+                  error:
+                      (_) => SignInButton(
+                        onPressed: () {
+                          context.read<LoginCubit>().login(
+                            _mobileController.text,
+                          );
+                        },
+                      ),
+                ),
+              ],
+            );
+          },
+          listener: (context, state) {
+            state.when(
+              initial: () {},
+              loading: () {},
+              success: (data) {
+                // Navigate to sales view on successful login
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const SalesView()),
                 );
               },
-            ),
-          ],
+              error: (message) {
+                // Show error message
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(message), backgroundColor: Colors.red),
+                );
+              },
+            );
+          },
         ),
       ),
     );

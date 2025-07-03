@@ -9,19 +9,12 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      backgroundColor: redColor,
-      body: Column(children: [AppTittleSection(), LoginSection()]),
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        backgroundColor: redColor,
+        body: SingleChildScrollView(child: Column(children: [AppTittleSection(), LoginSection()])),
+      ),
     );
   }
 }
-
-
-
-
-
-
-
-
-

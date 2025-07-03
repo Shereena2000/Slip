@@ -13,9 +13,9 @@ class PhoneNumberInputFeild extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: _mobileController,
-      keyboardType: TextInputType.phone,
+      keyboardType: TextInputType.phone,  autofocus: true,
       style: TextStyle(
-        // 👈 this controls user-typed text
+        
         fontSize: 20,
         color: blackColor,
         fontWeight: FontWeight.w500,
@@ -40,7 +40,7 @@ class PhoneNumberInputFeild extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Image.asset(
-                'assets/images/Flag_of_India.png', // Make sure this asset exists
+                'assets/images/Flag_of_India.png',
                 width: 25,
                 height: 25,
               ),
