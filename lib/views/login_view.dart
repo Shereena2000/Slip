@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:slip/constants/colors.dart';
-import 'package:slip/views/sales_view.dart';
+import 'package:slip/views/sales_view/sales_view.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});

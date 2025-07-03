@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slip/constants/colors.dart';
 import 'package:slip/views/login_view.dart';
 
 void main() {
@@ -8,15 +9,22 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Slip',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-      
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      textTheme: const TextTheme(
+      titleLarge: TextStyle( // AppBar Title (Sales)
+        fontSize: 20,
+        fontWeight: FontWeight.w900,
+        color: Colors.grey,
+      ),
+     
+    ),
+       
       ),
       home: const LoginView()
     );
