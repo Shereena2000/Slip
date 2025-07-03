@@ -75,7 +75,7 @@ class LoginSection extends StatelessWidget {
               loading: () {},
               success: (data) {
                 // Navigate to sales view on successful login
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const SalesView()),
                 );

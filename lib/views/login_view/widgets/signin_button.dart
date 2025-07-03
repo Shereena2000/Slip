@@ -29,7 +29,7 @@ class SignInButton extends StatelessWidget {
             const SizedBox(width: 20),
             CircleAvatar(
               radius: 13,
-              backgroundColor: Colors.teal[700], // Darker shade for contrast
+              backgroundColor: Colors.teal[700], 
               child: const Icon(
                 Icons.arrow_forward_ios,
                 size: 13,
